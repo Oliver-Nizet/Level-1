@@ -47,7 +47,7 @@ public class EasyButton extends MouseAdapter {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		speak("That was easy!");
+		speak("SAVAGE");
 	}
 
 }
