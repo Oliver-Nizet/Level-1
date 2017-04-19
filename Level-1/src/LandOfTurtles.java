@@ -28,7 +28,8 @@ public class LandOfTurtles {
 	}
 	public static void main(String[] args) {
 		MultiTurtlePanel panel = new MultiTurtlePanel();
-		String galapagosIslands = "https://farm2.staticflickr.com/1104/752631367_5c5d474ba5_o.jpg";
+		String galapagosIslands = "http://farm2.staticflickr.com/1104/752631367_5c5d474ba5_o.jpg";
+		//galapagosIslands = "file://beach.jpg";
 		LandOfTurtles lot = new LandOfTurtles();
 // 1. Create a frame & make it visible
 		
