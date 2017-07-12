@@ -1,3 +1,4 @@
+package Smurf;
 
 
 public class Smurf {
