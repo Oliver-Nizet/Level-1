@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Random;
- 
+
 import javax.swing.JOptionPane;
- 
+
 public class SpellingBee {
 	int lines;
 	ArrayList<String> words = new ArrayList<>();
- 
+
 	/*
 	 * Get a random word using the randomWord() method and ask the user how to
 	 * spell it using the speak() method. If the user spells it right move on to
@@ -19,21 +19,21 @@ public class SpellingBee {
 	 * that you need to write code in is the stuffForYouToDo() Method
 	 */
 	public void stuffForYouToDo() {
-		//You write code in here
+		// You write code in here
 		String rw = randomWord();
-		Speak("Spell"+rw);
+		Speak("Spell" + rw);
 		String answer = JOptionPane.showInputDialog("spell plese");
-		if(answer.equals(rw)){
+		if (answer.equals(rw)) {
 			Speak("you win scrub yo");
 		} else {
-			Speak("go die in a hole retard you have no friends and no life");
+			Speak("go die in a hole kid you have no friends and no life");
 		}
 	}
- 
+
 	public String randomWord() {
 		return words.get(new Random().nextInt(lines));
 	}
- 
+
 	public SpellingBee() {
 		System.out.println(" /--------------------------------------------\\ ");
 		System.out.println(" | Warning: Some of the words are super hard! | ");
@@ -55,11 +55,11 @@ public class SpellingBee {
 		}
 		stuffForYouToDo();
 	}
- 
+
 	public static void main(String[] args) {
 		new SpellingBee();
 	}
- 
+
 	public void Speak(String text) {
 		try {
 			Runtime.getRuntime().exec("say " + text).waitFor();
@@ -67,7 +67,7 @@ public class SpellingBee {
 			e.printStackTrace();
 		}
 	}
- 
+
 	public void speakNoWait(String text) {
 		try {
 			Runtime.getRuntime().exec("say " + text);
@@ -75,6 +75,5 @@ public class SpellingBee {
 			e.printStackTrace();
 		}
 	}
- 
+
 }
- 

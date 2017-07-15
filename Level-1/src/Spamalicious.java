@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Spamalicious implements ActionListener{
+public class Spamalicious implements ActionListener {
 	static final String FAKE_USERNAME = "iHateGreenBeansDaddy";
 	static final String FAKE_PASSWORD = "carrots4life";
 
@@ -22,12 +22,12 @@ public class Spamalicious implements ActionListener{
 	JButton button1;
 	JButton button2;
 	JTextField textfield;
-	
+
 	public static void main(String[] args) {
 		Spamalicious spamalicious = new Spamalicious();
 	}
 
-	Spamalicious(){
+	Spamalicious() {
 		frame = new JFrame();
 		panel = new JPanel();
 		button1 = new JButton();
@@ -50,37 +50,37 @@ public class Spamalicious implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i = 0; i < 100; i++) {
-			sendSpam(textfield.getText(),"Join the dark side","go eat a dum dum wrapper");
+			sendSpam(textfield.getText(), "Hello you have been hacked. LOL");
 		}
 	}
-private boolean sendSpam(String recipient, String subject, String content) {
 
-	Properties props = new Properties();
-	props.put("mail.smtp.auth", "true");
-	props.put("mail.smtp.starttls.enable", "true");
-	props.put("mail.smtp.host", "smtp.gmail.com");
-	props.put("mail.smtp.port", "587");
+	private boolean sendSpam(String recipient, String subject, String content) {
 
-	Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-		protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-			return new javax.mail.PasswordAuthentication(FAKE_USERNAME, FAKE_PASSWORD);
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+				return new javax.mail.PasswordAuthentication(FAKE_USERNAME, FAKE_PASSWORD);
+			}
+		});
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(FAKE_USERNAME));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
+			message.setSubject(subject);
+			message.setText(content);
+			Transport.send(message);
+			return true;
+
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return false;
 		}
-	});
-
-	try {
-
-		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(FAKE_USERNAME));
-		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
-		message.setSubject(subject);
-		message.setText(content);
-		Transport.send(message);
-		return true;
-
-	} catch (MessagingException e) {
-e.printStackTrace();
-return false;
 	}
 }
-}
-
