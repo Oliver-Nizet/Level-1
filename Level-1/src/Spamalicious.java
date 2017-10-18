@@ -49,7 +49,7 @@ public class Spamalicious implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 50; i++) {
 			sendSpam(textfield.getText(), "Get rekt", "Hello you have been hacked. LOL");
 		}
 	}
